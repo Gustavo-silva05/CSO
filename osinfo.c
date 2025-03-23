@@ -88,11 +88,11 @@ void get_io_stats (char *buffer, size_t size) {
                 strncat (res, aux, sizeof(res));
             }
             else if (i==3) {
-                sprintf(a, "- leituras Completas: %s ",ptr);
+                sprintf(aux, "- leituras Completas: %s ",ptr);
                 strncat (res, aux, sizeof(res));
             }
             else if (i==7) {
-                sprintf(a, "- Escritas Completas: %s ",ptr);
+                sprintf(aux, "- Escritas Completas: %s ",ptr);
                 strncat (res, aux, sizeof(res));
                 break;
             }
@@ -104,7 +104,7 @@ void get_io_stats (char *buffer, size_t size) {
 
     fclose(file);
 
-    snprintf(buffer, size, "<p><strong>Input/Output opertaions:</strong> %s</p>\n", aux);
+    snprintf(buffer, size, "<p><strong>Input/Output opertaions:</strong> %s</p>\n", res);
 }
 
 
