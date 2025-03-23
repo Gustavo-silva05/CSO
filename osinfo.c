@@ -69,7 +69,7 @@ int main() {
 void get_io_stats (char *buffer, size_t size) {
     FILE *file;
     char temp[256];
-    char res [256];
+    char res [1024];
 
 
     file = fopen("/proc/diskstats", "r");
@@ -78,33 +78,33 @@ void get_io_stats (char *buffer, size_t size) {
         return;
     }
     while(fgets(temp, sizeof(temp), file)) {
-        printf("%s", temp);
+        printf("%s\n", temp);
         char * ptr = strtok(temp, " ");
-        char aux [128]; 
+        char aux [32]; 
         int i = 0;  
         while (ptr) {
             if (i==2) {
-                sprintf(aux, "\nDevice Name: %s ",ptr);
+                snprintf(aux,  sizeof(aux),"\nDevice Name: %s ",ptr);
                 strncat (res, aux, sizeof(res));
             }
             else if (i==3) {
-                sprintf(aux, "- leituras Completas: %s ",ptr);
+                snprintf(aux, sizeof(aux),"- reads: %s ",ptr);
                 strncat (res, aux, sizeof(res));
             }
             else if (i==7) {
-                sprintf(aux, "- Escritas Completas: %s ",ptr);
+                snprintf(aux, sizeof(aux),"- writes: %s\n",ptr);
                 strncat (res, aux, sizeof(res));
                 break;
             }
             ptr = strtok(0, " ");
             i++;
 	    }
-        printf("%s", aux);    
+        // printf("%s", res);    
     }
 
     fclose(file);
 
-    snprintf(buffer, size, "<p><strong>Input/Output opertaions:</strong> %s</p>\n", res);
+    snprintf(buffer, sizeof(res), "<p><strong>Input/Output opertaions:</strong> %s</p>\n", res);
 }
 
 
