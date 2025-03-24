@@ -3,6 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/file.h>
+#include <ctype.h>
+#include <dirent.h>
 
 void get_version    (char *buffer, size_t size);
 void get_uptime     (char *buffer, size_t size);
@@ -80,7 +82,7 @@ int main() {
 }
 
 void get_process_list(char *buffer, size_t size) {
-    DIR *dir;
+    DIR * dir;
     struct dirent *entry;
     char temp[256];
     char res[1024] = {0}; // Store process list
