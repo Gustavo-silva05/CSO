@@ -14,6 +14,7 @@ void get_io_stats   (char *buffer, size_t size);
 void get_filesystem (char *buffer, size_t size);
 void get_devices    (char *buffer, size_t size);
 void get_net_devices (char *buffer, size_t size);
+void get_process_list(char *buffer, size_t size);
 
 int main() {
     while (1) {
@@ -63,6 +64,9 @@ int main() {
 
         get_net_devices(buffer, sizeof(buffer));
         fprintf(file, "%s", buffer);
+	
+	get_process_list(buffer, sizeof(buffer));
+        fprintf(file, "%s", buffer);
 
         fprintf(file, "</body></html>\n");
 
@@ -73,6 +77,39 @@ int main() {
     }
 
     return 0;
+}
+
+void get_process_list(char *buffer, size_t size) {
+    DIR *dir;
+    struct dirent *entry;
+    char temp[256];
+    char res[1024] = {0}; // Store process list
+
+    dir = opendir("/proc");
+    if (!dir) {
+        snprintf(buffer, size, "<p><strong>Process List:</strong> Unable to access /proc directory</p>\n");
+        return;
+    }
+
+    while ((entry = readdir(dir)) != NULL) {
+        // Check if the directory name consists only of digits (i.e., it's a process ID)
+        int is_process = 1;
+        for (char *p = entry->d_name; *p; p++) {
+            if (!isdigit(*p)) {
+                is_process = 0;
+                break;
+            }
+        }
+
+        if (is_process) {
+            snprintf(temp, sizeof(temp), "PID: %s\n", entry->d_name);
+            strncat(res, temp, sizeof(res) - strlen(res) - 1);
+        }
+    }
+
+    closedir(dir);
+
+    snprintf(buffer, size, "<p><strong>Process List:</strong><br>%s</p>\n", res);
 }
 
 void get_net_devices(char *buffer, size_t size) {
