@@ -3,52 +3,60 @@
 <p><strong>System version and Kernel:</strong> Linux version 6.11.0-19-generic (buildd@lcy02-amd64-014) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #19~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Feb 17 11:51:52 UTC 2
 </p>
 
-<p><strong>Uptime:</strong> 00:02:21:05</p>
+<p><strong>Uptime:</strong> 00:01:36:18</p>
 
-<p><strong>downtime:</strong> 00:07:41:47</p>
+<p><strong>downtime:</strong> 01:00:40:50</p>
 
-<p><strong>DateTime:</strong> 2025-03-24 01:04:32</p>
+<p><strong>DateTime:</strong> 2025-03-24 12:49:04</p>
 
-<p><strong>Processor Information:</strong> Intel(R) Core(TM) i3-2370M CPU @ 2.40GHz with 1022.19 MHz and 2 core(s)</p>
+<p><strong>Processor Information:</strong> AMD Ryzen 7 5700U with Radeon Graphics with 1966.26 MHz and 8 core(s)</p>
 
-<p><strong>Load Average:</strong> 1 min: 1.00, 5 min: 0.63, 15 min: 0.72</p>
+<p><strong>Load Average:</strong> 1 min: 0.36, 5 min: 0.38, 15 min: 0.44</p>
 
 <p><strong>Input/Output opertaions:</strong> 
 Device Name: loop0 - reads: 14 - writes: 0
 
-Device Name: loop1 - reads: 3806 - writes: 0
+Device Name: loop1 - reads: 57 - writes: 0
 
-Device Name: loop2 - reads: 351 - writes: 0
+Device Name: loop2 - reads: 65 - writes: 0
 
-Device Name: loop3 - reads: 248 - writes: 0
+Device Name: loop3 - reads: 64 - writes: 0
 
-Device Name: loop4 - reads: 89 - writes: 0
+Device Name: loop4 - reads: 43 - writes: 0
 
-Device Name: loop5 - reads: 5611 - writes: 0
+Device Name: loop5 - reads: 51 - writes: 0
 
-Device Name: loop6 - reads: 85 - writes: 0
+Device Name: loop6 - reads: 418 - writes: 0
 
-Device Name: loop7 - reads: 47 - writes: 0
+Device Name: loop7 - reads: 56 - writes: 0
 
-Device Name: sda - reads: 33858 - writes: 40897
+Device Name: nvme0n1 - reads: 123877 - writes: 95863
 
-Device Name: sda1 - reads: 26 - writes: 0
+Device Name: nvme0n1p1 - reads: 982 - writes: 2
 
-Device Name: sda2 - reads: 33727 - writes: 40897
+Device Name: nvme0n1p2 - reads: 122784 - writes: 95861
 
-Device Name: sr0 - reads: 0 - writes: 0
+Device Name: loop8 - reads: 457 - writes: 0
 
-Device Name: loop8 - reads: 2114 - writes: 0
+Device Name: loop9 - reads: 60 - writes: 0
 
-Device Name: loop9 - reads: 1866 - writes: 0
+Device Name: loop10 - reads: 59 - writes: 0
 
-Device Name: loop10 - reads: 23 - writes: 0
+Device Name: loop11 - reads: 43 - writes: 0
 
-Device Name: loop11 - reads: 61 - writes: 0
+Device Name: loop12 - reads: 92 - writes: 0
 
-Device Name: loop12 - reads: 10 - writes: 0
-</p>
-<p><strong>Filesystem:</strong> nodev	sysfs
+Device Name: loop14 - reads: 54 - writes: 0
+
+Device Name: loop13 - reads: 78 - writes: 0
+
+Device Name: loop15 - reads: 61 - writes: 0
+
+Device Name: loop16 - reads: 58 - writes: 0
+
+Device Name: loop17 - reads: 55 - writes: 0
+
+Device Name: loo<p><strong>Filesystem:</strong> nodev	sysfs
 nodev	tmpfs
 nodev	bdev
 nodev	proc
@@ -77,6 +85,7 @@ nodev	fuse
 nodev	fusectl
 nodev	efivarfs
 nodev	mqueue
+nodev	resctrl
 nodev	pstore
 nodev	autofs
 nodev	binfmt_misc
@@ -110,11 +119,13 @@ nodev	overlay
 204 ttyMAX
 216 rfcomm
 226 drm
-236 media
-237 aux
-238 cec
-239 lirc
-240 mei
+234 kfd
+235 aux
+236 cec
+237 media
+238 lirc
+239 nvme-generic
+240 nvme
 241 hidraw
 242 ttyDBC
 243 bsg
@@ -158,124 +169,139 @@ Block devices:
 </p>
 <p><strong>Network devices:</strong> Inter-|   Receive                                                |  Transmit
  face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed
-    lo: 162442187 1285397    0    0    0     0          0         0 162442187 1285397    0    0    0     0       0          0
-enp19s0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0
-wlp7s0: 132533713  140210    0  295    0     0          0         0 24378094   86116    0    0    0     0       0          0
+    lo: 145144233 1278339    0    0    0     0          0         0 145144233 1278339    0    0    0     0       0          0
+wlp1s0: 65338370  100848    0   37    0     0          0         0 23483032   61941    0    0    0     0       0          0
+docker0:       0       0    0    0    0     0          0         0        0       0    0   40    0     0       0          0
 </p>
-<p><strong>Process List:</strong><br>PID: 1
-PID: 2
-PID: 3
-PID: 4
-PID: 5
-PID: 6
-PID: 7
-PID: 9
-PID: 12
-PID: 13
-PID: 14
-PID: 15
-PID: 16
-PID: 17
-PID: 18
-PID: 19
-PID: 20
-PID: 21
-PID: 22
-PID: 23
-PID: 24
-PID: 25
-PID: 26
-PID: 28
-PID: 29
-PID: 30
-PID: 31
-PID: 32
-PID: 34
-PID: 35
-PID: 36
-PID: 37
-PID: 38
-PID: 41
-PID: 42
-PID: 44
-PID: 45
-PID: 46
-PID: 48
-PID: 49
-PID: 50
-PID: 51
-PID: 52
-PID: 53
-PID: 54
-PID: 55
-PID: 58
-PID: 59
-PID: 60
-PID: 61
-PID: 62
-PID: 63
-PID: 64
-PID: 65
-PID: 67
-PID: 68
-PID: 69
-PID: 70
-PID: 75
-PID: 76
-PID: 78
-PID: 89
-PID: 94
-PID: 109
-PID: 111
-PID: 162
-PID: 173
-PID: 182
-PID: 183
-PID: 184
-PID: 185
-PID: 196
-PID: 197
-PID: 199
-PID: 200
-PID: 201
-PID: 202
-PID: 203
-PID: 204
-PID: 246
-PID: 247
-PID: 302
-PID: 360
-PID: 469
-PID: 499
-PID: 510
-PID: 512
-PID: 620
-PID: 630
-PID: 639
-PID: 640
-PID: 649
-PID: 655
-PID: 656
-PID: 661
-PID: 663
-PID: 664
-PID: 666
-PID: 667
-PID: 668
-PID: 670
-PID: 738
-PID: 739
-PID: 793
-PID: 796
-PID: 884
-PID: 912
-PID: 914
-PID: 915
-PID: 916
-PID: 1154
-PID: 1160
-PID: 1163
-PID: 1177
-PID: 1183
-PID: 1191
-PID: 11</body></html>
+<p><strong>Process List:</strong><br>
+PID:1- Name:	systemd
+
+PID:2- Name:	kthreadd
+
+PID:3- Name:	pool_workqueue_release
+
+PID:4- Name:	kworker/R-rcu_gp
+
+PID:5- Name:	kworker/R-sync_wq
+
+PID:6- Name:	kworker/R-slub_flushwq
+
+PID:7- Name:	kworker/R-netns
+
+PID:9- Name:	kworker/0:1-events
+
+PID:10- Name:	kworker/0:0H-events_highpri
+
+PID:12- Name:	kworker/R-mm_percpu_wq
+
+PID:13- Name:	rcu_tasks_kthread
+
+PID:14- Name:	rcu_tasks_rude_kthread
+
+PID:15- Name:	rcu_tasks_trace_kthread
+
+PID:16- Name:	ksoftirqd/0
+
+PID:17- Name:	rcu_preempt
+
+PID:18- Name:	rcu_exp_par_gp_kthread_worker/0
+
+PID:19- Name:	rcu_exp_gp_kthread_worker
+
+PID:20- Name:	migration/0
+
+PID:21- Name:	idle_inject/0
+
+PID:22- Name:	cpuhp/0
+
+PID:23- Name:	cpuhp/2
+
+PID:24- Name:	idle_inject/2
+
+PID:25- Name:	migration/2
+
+PID:26- Name:	ksoftirqd/2
+
+PID:28- Name:	kworker/2:0H-events_highpri
+
+PID:29- Name:	cpuhp/4
+
+PID:30- Name:	idle_inject/4
+
+PID:31- Name:	migration/4
+
+PID:32- Name:	ksoftirqd/4
+
+PID:34- Name:	kworker/4:0H-events_highpri
+
+PID:35- Name:	cpuhp/6
+
+PID:36- Name:	idle_inject/6
+
+PID:37- Name:	migration/6
+
+PID:38- Name:	ksoftirqd/6
+
+PID:39- Name:	kworker/6:0-events
+
+PID:40- Name:	kworker/6:0H-events_highpri
+
+PID:41- Name:	cpuhp/8
+
+PID:42- Name:	idle_inject/8
+
+PID:43- Name:	migration/8
+
+PID:44- Name:	ksoftirqd/8
+
+PID:46- Name:	kworker/8:0H-events_highpri
+
+PID:47- Name:	cpuhp/10
+
+PID:48- Name:	idle_inject/10
+
+PID:49- Name:	migration/10
+
+PID:50- Name:	ksoftirqd/10
+
+PID:52- Name:	kworker/10:0H-events_highpri
+
+PID:53- Name:	cpuhp/12
+
+PID:54- Name:	idle_inject/12
+
+PID:55- Name:	migration/12
+
+PID:56- Name:	ksoftirqd/12
+
+PID:58- Name:	kworker/12:0H-events_highpri
+
+PID:59- Name:	cpuhp/14
+
+PID:60- Name:	idle_inject/14
+
+PID:61- Name:	migration/14
+
+PID:62- Name:	ksoftirqd/14
+
+PID:64- Name:	kworker/14:0H-events_highpri
+
+PID:65- Name:	cpuhp/1
+
+PID:66- Name:	idle_inject/1
+
+PID:67- Name:	migration/1
+
+PID:68- Name:	ksoftirqd/1
+
+PID:70- Name:	kworker/1:0H-events_highpri
+
+PID:71- Name:	cpuhp/3
+
+PID:72- Name:	idle_inject/3
+
+PID:73- Name:	migration/3
+
+PID:74- Name:	ksoftirqd/3
+
+PID:7</body></html>
