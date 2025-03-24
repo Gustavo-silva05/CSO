@@ -11,6 +11,9 @@ void get_datetime   (char *buffer, size_t size);
 void get_cpuinfo    (char *buffer, size_t size);
 void get_loadavg    (char *buffer, size_t size);
 void get_io_stats   (char *buffer, size_t size);
+void get_filesystem (char *buffer, size_t size);
+void get_devices    (char *buffer, size_t size);
+void get_net_devices (char *buffer, size_t size);
 
 int main() {
     while (1) {
@@ -52,6 +55,15 @@ int main() {
         get_io_stats(buffer, sizeof(buffer));
         fprintf(file, "%s", buffer);
 
+        get_filesystem(buffer, sizeof(buffer));
+        fprintf(file, "%s", buffer);
+
+        get_devices(buffer, sizeof(buffer));
+        fprintf(file, "%s", buffer);
+
+        get_net_devices(buffer, sizeof(buffer));
+        fprintf(file, "%s", buffer);
+
         fprintf(file, "</body></html>\n");
 
         flock(fileno(file), LOCK_UN);
@@ -63,13 +75,70 @@ int main() {
     return 0;
 }
 
+void get_net_devices(char *buffer, size_t size) {
+    FILE *file;
+    char temp[32];
+    char res [1024] = {0};
 
+    file = fopen("/proc/net/dev", "r");
+    if (!file) {
+        snprintf(buffer, size, "<p><strong>Network devices:</strong> The file didn't open</p>\n");
+        return;
+    }
+    
+    while (fgets(temp, sizeof(temp), file)) {
+        // printf("%s", temp);
+        strncat(res, temp, sizeof(res)-strlen(res)-1);
+    }
+    fclose(file);    
 
+    snprintf(buffer, size, "<p><strong>Network devices:</strong> %s</p>\n", res);    
+}
+
+void get_devices(char *buffer, size_t size) {
+    FILE *file;
+    char temp[32];
+    char res [1024] = {0};
+
+    file = fopen("/proc/devices", "r");
+    if (!file) {
+        snprintf(buffer, size, "<p><strong>Devices:</strong> The file didn't open</p>\n");
+        return;
+    }
+    
+    while (fgets(temp, sizeof(temp), file)) {
+        // printf("%s", temp);
+        strncat(res, temp, sizeof(res)-strlen(res)-1);
+    }
+    fclose(file);
+
+    snprintf(buffer, size, "<p><strong>Devices:</strong> %s</p>\n", res);
+}
+
+void get_filesystem(char *buffer, size_t size) {
+    FILE *file;
+    char temp[32];
+    char res [1024] = {0};
+
+    file = fopen("/proc/filesystems", "r");
+    if (!file) {
+        snprintf(buffer, size, "<p><strong>Filesystem:</strong> The file didn't open</p>\n");
+        return;
+    }
+    
+    while (fgets(temp, sizeof(temp), file)) {
+        // printf("%s", temp);
+        strncat(res, temp, sizeof(res)-strlen(res)-1);
+    }
+    fclose(file);
+
+    snprintf(buffer, size, "<p><strong>Filesystem:</strong> %s</p>\n", res);
+}
 
 void get_io_stats (char *buffer, size_t size) {
     FILE *file;
     char temp[256];
-    char res [1024];
+    char res [1024] = {0};
 
 
     file = fopen("/proc/diskstats", "r");
@@ -78,28 +147,26 @@ void get_io_stats (char *buffer, size_t size) {
         return;
     }
     while(fgets(temp, sizeof(temp), file)) {
-        printf("%s\n", temp);
         char * ptr = strtok(temp, " ");
         char aux [32]; 
         int i = 0;  
         while (ptr) {
             if (i==2) {
                 snprintf(aux,  sizeof(aux),"\nDevice Name: %s ",ptr);
-                strncat (res, aux, sizeof(res));
+                strncat (res, aux, sizeof(res)-strlen(res)-1);
             }
             else if (i==3) {
                 snprintf(aux, sizeof(aux),"- reads: %s ",ptr);
-                strncat (res, aux, sizeof(res));
+                strncat (res, aux, sizeof(res)-strlen(res)-1);
             }
             else if (i==7) {
                 snprintf(aux, sizeof(aux),"- writes: %s\n",ptr);
-                strncat (res, aux, sizeof(res));
+                strncat (res, aux, sizeof(res)-strlen(res)-1);
                 break;
             }
             ptr = strtok(0, " ");
             i++;
 	    }
-        // printf("%s", res);    
     }
 
     fclose(file);
