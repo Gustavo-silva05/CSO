@@ -7,3 +7,4 @@ osinfo: osinfo.c
 
 clean:
 	rm -f osinfo
+	clear
