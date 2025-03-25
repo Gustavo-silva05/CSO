@@ -24,7 +24,7 @@ int main()
 {
     while (1)
     {
-        FILE *file = fopen("index.html", "w");
+        FILE *file = fopen("/root/index.html", "w");
         if (!file)
         {
             perror("Can't open html file");
@@ -169,7 +169,6 @@ void get_net_devices(char *buffer, size_t size)
             int j = 0;
             while (ptr)
             {
-                printf("%s\n", ptr);
                 if (j == 0)
                 {
                     snprintf(aux, sizeof(aux), "\nDevice Name: %s ", ptr);
@@ -193,7 +192,6 @@ void get_net_devices(char *buffer, size_t size)
                 ptr = strtok(0, " ");
                 j++;
             }
-            // printf("%s\n", temp);
         }
         i++;
     }
